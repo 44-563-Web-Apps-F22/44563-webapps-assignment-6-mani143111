@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title> Discounts Available</title>
+    </head>
  
 <body>
+<h1>Chigurupati computes discounts</h1>
 
-<h2>Chigurupati computes discounts</h2>
+<div class="container">
+    <form>
+        <div class="form-group">
+        <label for="basevalue">Enter base amount </label>
+        <input type ="number" id="basevalue" name="basevalue" value=20> <br>
+        </div>
+        <div class="form-group">
+        <label for="discountvalue">Enter the discount percentage</label>
+        <input type ="number" id="discountvalue" name="discountvalue" value=10> <br>
+        </div>
+        <input type="button" class="btn btn-warning" onclick="discount()" value="Apply discount">
+    </form>
 
-<form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
-
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
-
-    <input type="button" onclick="resolveForm()" value="Get values from form">
-</form>
-
-
-<p id="result">This text will be replaced </p>
-
-<script> 
-
-
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
-</script>
+    <p id="result">This text will be replaced </p>
+    </div>
+</div>
 <script>
+    function discount()
+    {   
+        let basevalue=document.getElementById("basevalue").value;
+        let value=document.getElementById("discountvalue").value;
+        let result="";
+        for(let i=1;i<6;i++)
+        {
+           let discount=(basevalue*i)-((basevalue*i)*value/100);
+           result=result+" "+discount;
+           
+        }
+        document.getElementById("result").innerHTML="Discounted amounts for base "+basevalue+" are "+result;
+    
+    }
+</script>
 
 <div class="container">
     <form>
@@ -83,5 +86,8 @@ function resolveForm (){
         }
     </script>
 
+
+
+
 </body>
-</html> 
+</html>
